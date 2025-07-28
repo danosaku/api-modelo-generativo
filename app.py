@@ -8,7 +8,7 @@ def gerar_lista_alimentos(perfil):
     alimentos_base = ["Arroz", "Feijão", "Frango", "Banana", "Brócolis"]
     return [[random.choice(alimentos_base) for _ in range(3)] for _ in range(5)]
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET'])
 def gerar():
     data = request.get_json()
     perfil = data.get("perfil", "geral")
