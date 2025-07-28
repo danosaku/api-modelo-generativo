@@ -5,7 +5,11 @@ app = Flask(__name__)
 
 # Exemplo de "modelo generativo"
 def gerar_lista_alimentos(perfil):
-    alimentos_base = ["Arroz", "Feijão", "Frango", "Banana", "Brócolis"]
+    if perfil=='vegetariano':
+        alimentos_base = ["Arroz", "Feijão", "Frango", "Banana", "Brócolis"]
+    else:
+        alimentos_base = ['Arroz', 'linguiça', 'coxão mole', 'vinagrete', 'pão de alho']
+    
     return [[random.choice(alimentos_base) for _ in range(3)] for _ in range(5)]
 
 @app.route('/', methods=['POST'])
