@@ -12,12 +12,18 @@ def gerar_lista_alimentos(perfil):
     
     return [[random.choice(alimentos_base) for _ in range(3)] for _ in range(5)]
 
-@app.route('/', methods=['POST'])
+#@app.route('/', methods=['POST'])
+#def gerar():
+#    data = request.get_json()
+#    perfil = data.get("perfil", "geral")
+#    lista = gerar_lista_alimentos(perfil)
+#    return jsonify(lista)
+
+@app.route('/', methods=['GET'])
 def gerar():
-    data = request.get_json()
-    perfil = data.get("perfil", "geral")
+    perfil = request.args.get("perfil", "geral")  # <-- esta linha muda
     lista = gerar_lista_alimentos(perfil)
     return jsonify(lista)
-
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
